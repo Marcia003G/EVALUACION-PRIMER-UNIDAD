@@ -1,32 +1,42 @@
 estudiantes = []
-def p(n, n1, n2, n3):
-    if n == "":
+
+def registrar_estudiante(nombre, nota1, nota2, nota3):
+    if nombre == "":
         print("Nombre incorrecto")
         return
-    if n1 < 0 or n1 > 10:
+
+    if nota1 < 0 or nota1 > 10:
         print("Nota incorrecta")
         return
-    if n2 < 0 or n2 > 10:
+
+    if nota2 < 0 or nota2 > 10:
         print("Nota incorrecta")
         return
-    if n3 < 0 or n3 > 10:
+
+    if nota3 < 0 or nota3 > 10:
         print("Nota incorrecta")
         return
-    suma = n1 + n2 + n3
+
+    suma = nota1 + nota2 + nota3
+
     if suma >= 24:
         estado = "APROBADO"
     else:
         estado = "REPROBADO"
+
     estudiantes.append({
-        "nombre": n,
-        "nota1": n1,
-        "nota2": n2,
-        "nota3": n3,
+        "nombre": nombre,
+        "nota1": nota1,
+        "nota2": nota2,
+        "nota3": nota3,
         "suma": suma,
         "estado": estado
     })
+
     print("Estudiante registrado")
-def l():
+
+
+def listar_estudiantes():
     if len(estudiantes) == 0:
         print("No existen estudiantes")
     else:
@@ -40,10 +50,13 @@ def l():
                 e["suma"],
                 e["estado"]
             )
-def buscar(n):
+
+
+def buscar_estudiante(nombre):
     encontrado = False
+
     for e in estudiantes:
-        if e["nombre"] == n:
+        if e["nombre"] == nombre:
             print(
                 e["nombre"],
                 e["nota1"],
@@ -53,9 +66,15 @@ def buscar(n):
                 e["estado"]
             )
             encontrado = True
+
     if encontrado == False:
-        print("Estudiante no encontrado")p("Ana", 8, 8, 8)
-p("Luis", 6, 6, 6)
-p("Carlos", 10, 9, 8)
-l()
-buscar("Ana")
+        print("Estudiante no encontrado")
+
+
+registrar_estudiante("Ana", 8, 8, 8)
+registrar_estudiante("Luis", 6, 6, 6)
+registrar_estudiante("Carlos", 10, 9, 8)
+
+listar_estudiantes()
+
+buscar_estudiante("Ana")
