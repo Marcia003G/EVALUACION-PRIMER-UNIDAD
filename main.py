@@ -1,3 +1,4 @@
+from reglas import obtener_estado
 estudiantes = []
 def validar_nota(nota):
     return 0 <= nota <= 10
@@ -21,10 +22,7 @@ def registrar_estudiante(nombre, nota1, nota2, nota3):
 
     suma = nota1 + nota2 + nota3
 
-    if suma >= 24:
-        estado = "APROBADO"
-    else:
-        estado = "REPROBADO"
+    estado = obtener_estado(suma)
 
     estudiantes.append({
         "nombre": nombre,
