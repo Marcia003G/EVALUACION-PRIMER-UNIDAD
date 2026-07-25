@@ -10,4 +10,9 @@ registrar_estudiante("Carlos", 10, 9, 8)
 
 listar_estudiantes()
 
-buscar_estudiante("Ana")
+estudiante = buscar_estudiante("Ana")
+
+if estudiante:
+    print(estudiante)
+else:
+    print("Estudiante no encontrado")

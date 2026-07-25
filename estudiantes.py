@@ -57,19 +57,11 @@ def listar_estudiantes():
 
 
 def buscar_estudiante(nombre):
-    encontrado = False
-
     for e in estudiantes:
         if e["nombre"] == nombre:
-            print(
-                e["nombre"],
-                e["nota1"],
-                e["nota2"],
-                e["nota3"],
-                e["suma"],
-                e["estado"]
-            )
-            encontrado = True
+            return e
+
+    return None
 
     if not encontrado:
         print("Estudiante no encontrado")
