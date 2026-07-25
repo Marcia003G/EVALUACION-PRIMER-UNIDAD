@@ -1,4 +1,4 @@
-from reglas import obtener_estado
+from reglas import obtener_estado, calcular_suma
 
 estudiantes = []
 
@@ -24,7 +24,7 @@ def registrar_estudiante(nombre, nota1, nota2, nota3):
         print("Nota 3 incorrecta")
         return
 
-    suma = nota1 + nota2 + nota3
+    suma = calcular_suma(nota1, nota2, nota3)
 
     estado = obtener_estado(suma)
 
