@@ -7,13 +7,13 @@ from estudiantes import (
 )
 
 def test_estado_aprobado():
-    assert obtener_estado(24) == "APROBADO"
+    assert obtener_estado(24, 8, 8, 8) == "APROBADO"
 
 def test_estado_reprobado():
-    assert obtener_estado(18) == "REPROBADO"
+    assert obtener_estado(18, 6, 6, 6) == "REPROBADO"
 
 def test_estado_reprobado_menor():
-    assert obtener_estado(10) == "REPROBADO"
+    assert obtener_estado(10, 4, 3, 3) == "REPROBADO"
 
 def test_nota_valida():
     assert validar_nota(8)
@@ -61,3 +61,6 @@ def test_buscar_estudiante_no_existente():
     estudiante = buscar_estudiante("No Existe")
 
     assert estudiante is None
+
+def test_reprobado_por_nota_individual_baja():
+    assert obtener_estado(24, 10, 10, 4) == "REPROBADO"

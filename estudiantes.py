@@ -26,7 +26,12 @@ def registrar_estudiante(nombre, nota1, nota2, nota3):
 
     suma = calcular_suma(nota1, nota2, nota3)
 
-    estado = obtener_estado(suma)
+    estado = obtener_estado(
+        suma,
+        nota1,
+        nota2,
+        nota3
+    )
 
     estudiantes.append({
         "nombre": nombre,
