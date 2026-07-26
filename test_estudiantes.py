@@ -1,5 +1,10 @@
 from reglas import obtener_estado, calcular_suma
-from estudiantes import validar_nota
+from estudiantes import (
+    validar_nota,
+    registrar_estudiante,
+    estudiantes,
+    buscar_estudiante,
+)
 
 def test_estado_aprobado():
     assert obtener_estado(24) == "APROBADO"
@@ -27,3 +32,32 @@ def test_nota_mayor():
 
 def test_calcular_suma():
     assert calcular_suma(8, 8, 8) == 24
+def test_registrar_estudiante():
+    estudiantes.clear()
+
+    registrar_estudiante("Pedro", 8, 8, 8)
+
+    assert len(estudiantes) == 1
+    assert estudiantes[0]["nombre"] == "Pedro"
+    assert estudiantes[0]["nota1"] == 8
+    assert estudiantes[0]["nota2"] == 8
+    assert estudiantes[0]["nota3"] == 8
+    assert estudiantes[0]["suma"] == 24
+    assert estudiantes[0]["estado"] == "APROBADO"
+
+def test_buscar_estudiante_existente():
+    estudiantes.clear()
+
+    registrar_estudiante("Ana", 8, 8, 8)
+
+    estudiante = buscar_estudiante("Ana")
+
+    assert estudiante is not None
+    assert estudiante["nombre"] == "Ana"
+
+def test_buscar_estudiante_no_existente():
+    estudiantes.clear()
+
+    estudiante = buscar_estudiante("No Existe")
+
+    assert estudiante is None
